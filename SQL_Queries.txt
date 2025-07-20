@@ -200,7 +200,7 @@ WHERE s.fiscal_year= 2021
 GROUP BY p.division,p.product_code,p.product
 ),
 cte2 as (
-SELECT *, DENSE_RANK() over(partition by division order by total_sold_quantity) as rnk 
+SELECT *, DENSE_RANK() over(partition by division order by total_sold_quantity desc) as rnk 
 FROM cte1
 )
 SELECT * FROM cte2
